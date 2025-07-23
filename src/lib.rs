@@ -3,6 +3,8 @@ use rand::rngs::OsRng;
 
 pub struct KeyPair {
     pub public_key: PublicKey,
+
+    // this field is kept private so that only enclve functions can access it
     secret_key: SecretKey,
 }
 
@@ -17,6 +19,8 @@ impl KeyPair {
         }
     }
 
+    // this function generates a reference to the secret key and gives to the caller
+    // "supposed to be secure"
     fn get_secret_key(&self) -> &SecretKey {
         &self.secret_key
     }
